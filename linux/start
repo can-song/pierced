@@ -1,0 +1,16 @@
+#! /usr/bin/env sh
+# 
+# Created on 2021/09/12 12:05:52
+# @Author: songcan
+# @Email: songcan@sensetime.com
+# @Version: 1.0
+
+set -x
+SCRIPT_DIR=$(dirname $(realpath $0))
+
+# $1: subdomain
+# $2: port
+
+tmux new -s 'pierced' -n 'work' -d
+tmux send -t "pierced:work" \
+    "$SCRIPT_DIR/ding -config=$SCRIPT_DIR/ding.cfg -subdomain=$1 $2" Enter
